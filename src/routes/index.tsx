@@ -4,6 +4,7 @@ import HeroSection from "../components/HeroSection";
 import ProblemSection from "../components/ProblemSection";
 import HowItWorks from "../components/HowItWorks";
 import FeaturesSection from "../components/FeaturesSection";
+import ScrollPhoneShowcase from "../components/ScrollPhoneShowcase";
 import DashboardPreview from "../components/DashboardPreview";
 import WaitlistSection from "../components/WaitlistSection";
 import FooterSection from "../components/FooterSection";
@@ -19,6 +20,7 @@ function Index() {
       <HeroSection />
       <ProblemSection />
       <HowItWorks />
+      <ScrollPhoneShowcase />
       <FeaturesSection />
       <DashboardPreview />
       <WaitlistSection />
