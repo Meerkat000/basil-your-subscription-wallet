@@ -7,9 +7,12 @@ const cards = [
   { name: "Adobe", amount: "$54.99", limit: "$55 cap", brand: "AD", gradient: "from-[#fb7185] to-[#9f1239]", x: -18, y: 174, rotate: -3 },
 ];
 
+const spring = { type: "spring", stiffness: 80, damping: 20 } as const;
+
 export default function SubscriptionCards() {
   return (
     <div className="relative h-[520px] w-[360px] md:h-[590px] md:w-[420px]">
+      {/* Wallet base */}
       <motion.div
         animate={{ y: [0, -8, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -33,10 +36,11 @@ export default function SubscriptionCards() {
         </div>
       </motion.div>
 
+      {/* Health bar */}
       <motion.div
         initial={{ opacity: 0, y: 22 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.35, duration: 0.55 }}
+        transition={{ delay: 0.35, duration: 0.55, ...spring }}
         className="absolute left-8 top-10 w-[280px] rounded-[2rem] border border-white/70 bg-white/[0.82] p-4 shadow-2xl backdrop-blur"
       >
         <div className="mb-4 flex items-center justify-between">
@@ -50,27 +54,31 @@ export default function SubscriptionCards() {
           <motion.div
             initial={{ width: "12%" }}
             animate={{ width: "78%" }}
-            transition={{ delay: 0.65, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.65, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
             className="h-full rounded-full bg-[#0f766e]"
           />
         </div>
       </motion.div>
 
+      {/* Subscription cards */}
       {cards.map((card, index) => (
         <motion.div
           key={card.name}
-          initial={{ opacity: 0, y: 60, rotate: card.rotate - 8 }}
+          initial={{ opacity: 0, y: 70, rotate: card.rotate - 10, scale: 0.9 }}
           animate={{
             opacity: 1,
-            y: [card.y, card.y - 10, card.y],
-            rotate: [card.rotate, card.rotate + 1.5, card.rotate],
+            y: [card.y, card.y - 12, card.y],
+            rotate: [card.rotate, card.rotate + 2, card.rotate],
+            scale: 1,
           }}
           transition={{
-            opacity: { duration: 0.5, delay: 0.55 + index * 0.14 },
-            y: { duration: 4 + index * 0.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 },
-            rotate: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 },
+            opacity: { duration: 0.6, delay: 0.55 + index * 0.15 },
+            scale: { duration: 0.6, delay: 0.55 + index * 0.15, ease: [0.22, 1, 0.36, 1] },
+            y: { duration: 4 + index * 0.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.3 },
+            rotate: { duration: 5 + index * 0.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.3 },
           }}
-          className={`absolute left-1/2 top-24 w-[230px] -translate-x-1/2 rounded-[1.65rem] bg-gradient-to-br ${card.gradient} p-4 text-white shadow-2xl`}
+          whileHover={{ scale: 1.06, rotate: 0, zIndex: 50 }}
+          className={`absolute left-1/2 top-24 w-[230px] -translate-x-1/2 cursor-pointer rounded-[1.65rem] bg-gradient-to-br ${card.gradient} p-4 text-white shadow-2xl transition-shadow hover:shadow-[0_30px_80px_rgba(0,0,0,0.3)]`}
           style={{ marginLeft: card.x, zIndex: 20 + index }}
         >
           <div className="flex items-center justify-between">
@@ -85,17 +93,18 @@ export default function SubscriptionCards() {
             </div>
           </div>
           <motion.div
-            animate={{ opacity: [0.35, 0.8, 0.35], scaleX: [0.8, 1, 0.8] }}
+            animate={{ opacity: [0.3, 0.8, 0.3], scaleX: [0.8, 1, 0.8] }}
             transition={{ duration: 2.4, repeat: Infinity, delay: index * 0.25 }}
             className="absolute -bottom-7 left-1/2 h-7 w-px origin-top bg-white/50"
           />
         </motion.div>
       ))}
 
+      {/* Floating badges */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1.15, duration: 0.5 }}
+        transition={{ delay: 1.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="absolute bottom-28 right-0 rounded-2xl border border-white/70 bg-white/[0.88] px-4 py-3 text-sm font-bold text-[#07111d] shadow-xl backdrop-blur"
       >
         <div className="flex items-center gap-2">
@@ -105,9 +114,9 @@ export default function SubscriptionCards() {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1.3, duration: 0.5 }}
+        transition={{ delay: 1.35, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="absolute bottom-12 left-0 rounded-2xl border border-white/70 bg-white/[0.88] px-4 py-3 text-sm font-bold text-[#07111d] shadow-xl backdrop-blur"
       >
         <div className="flex items-center gap-2">
