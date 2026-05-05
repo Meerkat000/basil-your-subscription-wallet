@@ -33,10 +33,14 @@ export const Route = createRootRoute({
       { name: "description", content: "Basil gives every subscription its own digital card with custom spending limits. Freeze, cancel, and get price-change alerts instantly." },
       { name: "author", content: "Basil" },
       { property: "og:title", content: "Basil — Take Control of Every Subscription" },
-      { property: "og:description", content: "Basil gives every subscription its own digital card with custom spending limits." },
+      { property: "og:description", content: "Basil gives every subscription its own digital card with custom spending limits. Freeze, cancel, and get price-change alerts instantly." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@trybasil" },
+      { name: "twitter:title", content: "Basil — Take Control of Every Subscription" },
+      { name: "twitter:description", content: "Basil gives every subscription its own digital card with custom spending limits. Freeze, cancel, and get price-change alerts instantly." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/49fcb2de-1cb5-4b43-b0f6-a547bab24863/id-preview-fbea8079--5c2a8a59-212c-4d83-b3d6-ca687324681e.lovable.app-1777951367145.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/49fcb2de-1cb5-4b43-b0f6-a547bab24863/id-preview-fbea8079--5c2a8a59-212c-4d83-b3d6-ca687324681e.lovable.app-1777951367145.png" },
     ],
     links: [
       {
