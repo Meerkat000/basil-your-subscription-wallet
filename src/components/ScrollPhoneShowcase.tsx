@@ -88,7 +88,7 @@ function PhoneScreen({
 
   return (
     <motion.div
-      style={{ opacity, y, scale, filter: blur.get ? undefined : undefined }}
+      style={{ opacity, y, scale }}
       className="absolute inset-x-4 top-28"
     >
       <motion.div style={{ filter: useTransform(blur, (v) => `blur(${v}px)`) }}>
